@@ -1,0 +1,2 @@
+ACTION=="add",SUBSYSTEM=="usb",ATTRS{idVendor}=="22b8",ATTRS{idProduct}=="2e76",SYMLINK+="andrddev",RUN+="/bin/sh /tmp/device/device_plug.sh"
+ACTION=="remove",ENV{ID_MODEL}=="Moto_G__4_",RUN+="/bin/sh /tmp/device/device_unplug.sh"

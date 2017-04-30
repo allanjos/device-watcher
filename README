@@ -1,0 +1,28 @@
+INSTALLATION
+============
+
+sudo sh install.sh
+
+
+QT application to monitor device log events:
+
+app/android-dev-watcher-qt/
+
+
+inotify
+======
+
+Scripts for inotify reside in 'inotify' directory.
+
+
+MISC
+====
+
+Monitor udev registered events:
+
+Less detail:
+    udevadm monitor
+
+More detail:
+    udevadm monitor --property
+
