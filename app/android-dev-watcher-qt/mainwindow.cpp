@@ -9,6 +9,7 @@
 #include <QDir>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QProcess>
 
 #include <iostream>
 
@@ -52,6 +53,39 @@ void MainWindow::directoryChanged(const QString& path)
 void MainWindow::fileChanged(const QString& path)
 {
     logText("FILE CHANGE: " + path);
+
+    QProcess process;
+
+    logText("Reading last entry from events file...");
+
+    process.start("tail -n 1 " + ui->lineEditDevEventsFile->text());
+
+    process.waitForFinished(-1);
+
+    if (process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0) {
+        logText(QString("Exit code: %1").arg(process.exitCode()));
+    }
+
+    QString stdOutput = process.readAllStandardOutput().trimmed();
+    QString stdError = process.readAllStandardError().trimmed();
+
+    logText("Standard output: " + stdOutput);
+    logText("Standard error: " + stdOutput);
+
+    QRegExp regex("^DEV ADDED");
+
+    // Device was added
+    if (regex.indexIn(stdOutput) >= 0) {
+       logText("Device was added.");
+    }
+    // Device was removed
+    else {
+        logText("Device was removed.");
+    }
+
+    qDebug() << regex.captureCount();
+
+    //QThread::msleep(10);
 }
 
 void MainWindow::logText(const QString &str)
