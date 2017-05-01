@@ -1,22 +1,22 @@
-INSTALLATION
-============
+# Installation
 
 sudo sh install.sh
 
+
+# Modules
+
+## Apps
 
 QT application to monitor device log events:
 
 app/android-dev-watcher-qt/
 
-
-inotify
-======
+## inotify
 
 Scripts for inotify reside in 'inotify' directory.
 
 
-MISC
-====
+# Miscellaneous
 
 Monitor udev registered events:
 

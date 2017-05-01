@@ -115,7 +115,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QFileDialog dialog;
+    QFileDialog dialog(this, tr("Choose directory where resides ADB"));
 
     dialog.setFileMode(QFileDialog::Directory);
     dialog.setOption(QFileDialog::ShowDirsOnly);
@@ -136,5 +136,32 @@ void MainWindow::on_pushButton_2_clicked()
 
     if (!dirName.isEmpty()) {
         ui->lineEditAdbDir->setText(dirName);
+    }
+}
+
+void MainWindow::on_pushButtonApkPath_clicked()
+{
+    QFileDialog dialog(this, tr("Choose Android APK to install when device is plugged"));
+
+    dialog.setNameFilter(tr("Android APK files (*.apk)"));
+
+    if (ui->lineEditApkPath->text().length() > 0) {
+        QFileInfo fileInfo(ui->lineEditApkPath->text());
+
+        dialog.setDirectory(fileInfo.dir());
+    }
+
+    int result = dialog.exec();
+
+    QString dirName = "";
+
+    if (result) {
+        dirName = dialog.selectedFiles()[0];
+
+        qDebug() << dirName;
+    }
+
+    if (!dirName.isEmpty()) {
+        ui->lineEditApkPath->setText(dirName);
     }
 }
