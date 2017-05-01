@@ -25,7 +25,7 @@ Scripts to handle udev events. Installded by install.sh.
 
 ## inotify
 
-Scripts for inotify reside in 'inotify' directory.
+Scripts and application for inotify reside in 'inotify' directory.
 
 ## USB
 
