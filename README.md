@@ -21,11 +21,17 @@ Scripts for udev resides in 'udev' directory.
 
 ## Logger
 
-Scripts to handle udev events. Installded by install.sh.
+Scripts to handle udev events. Installed by install.sh.
 
 ## inotify
 
 Scripts and application for inotify reside in 'inotify' directory.
+
+Build inotify native application:
+
+```
+sh inotify/c-api/compile.sh
+```
 
 ## USB
 
