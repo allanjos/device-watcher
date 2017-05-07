@@ -2,11 +2,13 @@
 
 source adb/config.sh
 
+source adb/adb-list.sh
+
 usage() {
     echo ""
     echo "Usage:"
     echo "Remove App and install APK"
-    echo "adb/adb-app-execute.sh <app.namespace> <app.namespace.activity>"
+    echo "adb/adb-app-execute.sh <app.namespace> <relative.app.namespace.activity>"
     echo ""
 }
 
@@ -29,5 +31,11 @@ APP_ACTIVITY=$2
 
 echo Application namespace: $APP_NAMESPACE
 echo Application activity to execute: $APP_ACTIVITY
+
+echo Stopping app in namespace $APP_NAMESPACE
+
+$ADB shell am force-stop $APP_NAMESPACE
+
+echo Executing application in namespace $APP_NAMESPACE and activity $APP_NAMESPACE.$APP_ACTIVITY
 
 $ADB shell am start -n $APP_NAMESPACE/$APP_ACTIVITY

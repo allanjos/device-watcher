@@ -33,7 +33,6 @@ if [ ! -z $2 ]; then
     echo Uninstalling $NAMESPACE
 
     $ADB uninstall $NAMESPACE
-    #$ADB shell am start -a android.intent.action.DELETE -d  $NAMESPACE
 fi
 
 # Install APK
