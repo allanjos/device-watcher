@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ADB=/home/allann/pessoal/packages/devel/android/Sdk/platform-tools/adb
+source adb/config.sh
 
 echo Getting Android device IP...
 
