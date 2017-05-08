@@ -12,8 +12,6 @@ usage() {
     echo ""
 }
 
-#$ADB devices | grep 'device$' | awk '{ print $1 }'
-
 if [ -z $1 ]; then
     echo Namespace was not informed.
     usage
@@ -34,8 +32,8 @@ echo Application activity to execute: $APP_ACTIVITY
 
 echo Stopping app in namespace $APP_NAMESPACE
 
-$ADB shell am force-stop $APP_NAMESPACE
+$ADB -s $ADB_DEVICE shell am force-stop $APP_NAMESPACE
 
-echo Executing application in namespace $APP_NAMESPACE and activity $APP_NAMESPACE.$APP_ACTIVITY
+echo Executing application in namespace $APP_NAMESPACE and activity $APP_NAMESPACE/$APP_ACTIVITY
 
-$ADB shell am start -n $APP_NAMESPACE/$APP_ACTIVITY
+$ADB -s $ADB_DEVICE shell am start -n $APP_NAMESPACE/$APP_ACTIVITY

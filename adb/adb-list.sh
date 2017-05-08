@@ -22,10 +22,6 @@ if [ $DEVICES_COUNT -lt 1 ]; then
     exit 1
 fi
 
-echo Default device: ${DEVICES_LIST[0]}
+ADB_DEVICE=${DEVICES_LIST[0]}
 
-#ADB_DEVICE=`$ADB devices | grep 'device$' | awk '{ print $1 }' | head -n 1`
-
-#ADB_DEVICE=$($CMD)
-
-#echo Default defice: $ADB_DEVICE
+echo Default device: $ADB_DEVICE

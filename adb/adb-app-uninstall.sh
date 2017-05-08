@@ -2,6 +2,8 @@
 
 source adb/config.sh
 
+source adb/adb-list.sh
+
 usage() {
     echo ""
     echo "Usage:"
@@ -9,8 +11,6 @@ usage() {
     echo "adb/adb-apk-uninstall.sh <App namespace>"
     echo ""
 }
-
-#$ADB devices | grep 'device$' | awk '{ print $1 }'
 
 if [ -z $1 ]; then
     usage
@@ -25,4 +25,4 @@ echo Namespace to uninstall: $APP_NAMESPACE
 
 echo Uninstalling $APP_NAMESPACE
 
-$ADB uninstall $APP_NAMESPACE
+$ADB -s $ADB_DEVICE uninstall $APP_NAMESPACE

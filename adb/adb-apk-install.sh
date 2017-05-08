@@ -2,6 +2,8 @@
 
 source adb/config.sh
 
+source adb/adb-list.sh
+
 usage() {
     echo ""
     echo "Usage:"
@@ -11,8 +13,6 @@ usage() {
     echo "adb/adb-apk-install.sh <APK file path>"
     echo ""
 }
-
-#$ADB devices | grep 'device$' | awk '{ print $1 }'
 
 if [ -z $1 ]; then
     usage
@@ -32,11 +32,11 @@ if [ ! -z $2 ]; then
 
     echo Uninstalling $NAMESPACE
 
-    $ADB uninstall $NAMESPACE
+    $ADB -s $ADB_DEVICE uninstall $NAMESPACE
 fi
 
 # Install APK
 
 echo Installing application $APK_PATH
 
-$ADB install -f $APK_PATH
+$ADB -s $ADB_DEVICE install -f $APK_PATH
